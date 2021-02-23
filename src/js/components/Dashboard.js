@@ -103,6 +103,9 @@ export default function Dashboard({ onToggleTheme }) {
   const containerWaveRef = useRef();
 
   const handleOpenDialogInput = () => {
+    data.length > 1 &&
+      data[position].hasOwnProperty('notewav') &&
+      setNote(data[position].notewav);
     setOpenDialogInput(true);
   };
 
@@ -185,14 +188,9 @@ export default function Dashboard({ onToggleTheme }) {
   };
 
   useEffect(() => {
-    console.log(
-      `Iki data anyar ${newData.forEach((item) => console.log(item))}`,
-      newData.length
-    );
     const listNote = newData.filter(
       (item) => item.notewav !== '' && item.hasOwnProperty('notewav')
     );
-    console.log(listNote);
     setDataContainsNotes(listNote);
 
     if (currentCount === '0') {
